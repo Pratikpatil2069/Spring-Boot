@@ -17,4 +17,5 @@ public class StudentApi3Application {
    3.@PathVariable:- this annotation is used to get the variables that shared from request.
    4.@RequestBody:- used to get the request body that send from front end through url.
    5.@Services:-this class contains main logic and spring creates automatically object of that class.
+
 */

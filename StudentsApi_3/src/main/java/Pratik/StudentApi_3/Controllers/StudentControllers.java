@@ -3,6 +3,8 @@ package Pratik.StudentApi_3.Controllers;
 import Pratik.StudentApi_3.Model.StudentModel;
 import Pratik.StudentApi_3.Services.StudentServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +29,6 @@ public class StudentControllers {
         @PostMapping("/add")
         public StudentModel addStudent(@RequestBody StudentModel studentModel){
             return studentsServices.save(studentModel);
-
         }
 
         @DeleteMapping("/deleteById/{id}")
