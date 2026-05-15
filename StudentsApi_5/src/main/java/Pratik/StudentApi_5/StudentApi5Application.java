@@ -16,6 +16,12 @@ public class StudentApi5Application {
 	2.then create Class Model
 	so now my task is to connect classModel to studentModel
 
+
+	   @DBRef:- mongoDb stores the reference of student documents into class document.
+	   @NoArgsConstructor:-  It automatically creates a constructor with no parameters.
+
+
+
 */
 
 

@@ -27,7 +27,7 @@ public class StudentControllers {
     }
 
     @GetMapping("/getById/{id}")
-    public ResponseEntity<StudentModel> getById(@PathVariable String id){
+    public ResponseEntity<StudentModel> getById(@PathVariable Object id){
         try{
             return new ResponseEntity<>(studentsServices.findById(id),HttpStatus.OK);
         }catch(Exception e){
@@ -36,25 +36,20 @@ public class StudentControllers {
 
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<StudentModel> addStudent(@RequestBody StudentModel studentModel){
-        try{
-            return new ResponseEntity<>(studentModel, HttpStatus.CREATED);
-        }catch (Exception e){
-            return new ResponseEntity<>(studentModel, HttpStatus.BAD_REQUEST);
-        }
-
+    @PostMapping("/add/{id}")
+    public StudentModel addStudent(@RequestBody StudentModel studentModel,@PathVariable Object id){
+      return studentsServices.save(studentModel,id);
 
     }
 
     @DeleteMapping("/deleteById/{id}")
-    public ResponseEntity<?> deleteStudentById(@PathVariable String id){
+    public ResponseEntity<?> deleteStudentById(@PathVariable Object id){
         studentsServices.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/updateById/{id}")
-    public ResponseEntity<StudentModel> updateById(@PathVariable String id , @RequestBody StudentModel studentModel){
+    public ResponseEntity<StudentModel> updateById(@PathVariable Object id , @RequestBody StudentModel studentModel){
         try{
             return new ResponseEntity<>(studentsServices.updateById(id,studentModel),HttpStatus.OK);
         }catch (Exception e){

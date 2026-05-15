@@ -25,7 +25,7 @@ public class ClassController {
     }
 
     @GetMapping("/getById/{id}")
-    public ClassModel getById(@PathVariable Object id){
+    public Optional<ClassModel> getById(@PathVariable Object id){
         return classServices.findById(id);
     }
 

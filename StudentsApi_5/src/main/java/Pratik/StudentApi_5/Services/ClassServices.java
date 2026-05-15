@@ -1,6 +1,7 @@
 package Pratik.StudentApi_5.Services;
 
 import Pratik.StudentApi_5.Model.ClassModel;
+import Pratik.StudentApi_5.Model.StudentModel;
 import Pratik.StudentApi_5.Repository.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class ClassServices {
     public List<ClassModel> findAll(){
         return classRepository.findAll();
     }
-    public ClassModel findById(Object id){
-        return classRepository.findById(id).orElse(null);
+    public Optional<ClassModel> findById(Object id){
+        return classRepository.findById(id);
     }
     public boolean deleteById(Object id){
         try{
@@ -33,6 +34,9 @@ public class ClassServices {
     }
     public Optional<ClassModel> updateById(Object id){
         return classRepository.findById(id);
+    }
+    public ClassModel findByStudentModelsContaining(StudentModel studentModel){
+        return classRepository.findByStudentModelsContaining(studentModel);
     }
 
 
